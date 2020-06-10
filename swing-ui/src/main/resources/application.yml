@@ -1,0 +1,19 @@
+ui:
+  component:
+    componentConfigXml: UiComponents.xml
+  toolbar:
+    toolbarListMap:
+      ENVBAR:
+        - buttonAction: DEV
+          buttonName: Dev
+          buttonToolTip: Run Dev Action
+        - buttonAction: TEST
+          buttonName: Test
+          buttonToolTip: Run Test Action
+      ACTIONBAR:
+        - buttonAction: SAVE
+          buttonName: Save
+          buttonToolTip: Save Item
+        - buttonAction: DELETE
+          buttonName: Delete
+          buttonToolTip: Delete Item

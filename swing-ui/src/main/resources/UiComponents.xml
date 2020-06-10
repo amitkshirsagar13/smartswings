@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+	<frame>
+		<panel panelName="TOOLBARPANEL" subPanelName="ButtonPanel">
+			<button buttonName="LOCAL" buttonAction="LOCAL">
+				<buttonToolTip>LOCAL Database</buttonToolTip>
+			</button>
+			<button buttonName="DEV" buttonAction="DEV">
+				<buttonToolTip>DEV Database</buttonToolTip>
+			</button>
+			<button buttonName="TEST" buttonAction="TEST">
+				<buttonToolTip>TEST Database</buttonToolTip>
+			</button>
+			<button buttonName="PROD" buttonAction="PROD">
+				<buttonToolTip>PROD Database</buttonToolTip>
+			</button>
+		</panel>
+		<panel panelName="UiPanel" subPanelName="FormPanel">
+			<formComponent componentType="JLabel" componentName="queryInputLabel"
+						   componentListeners="MouseListener" componentXPos="50" componentYPos="20">
+				<componentToolTip>OrderId/Email input:
+				</componentToolTip>
+			</formComponent>
+			<formComponent componentType="JTextField"
+						   componentName="queryInput" componentListeners="MouseListener|FocusListener"
+						   validationPattern="(\w+)" componentXPos="300" componentYPos="20"
+						   highLightColor="#FFCCEE">
+				<componentToolTip>OrderId/Email Input...
+				</componentToolTip>
+			</formComponent>
+			<formComponent componentType="JLabel" componentName="queryExplainLabel1"
+						   componentListeners="MouseListener" componentXPos="75" componentYPos="40" componentWidth="400" ComponentHeight="50">
+				<componentToolTip>1. Double click on LOGIN data to retrieve Profile Information
+				</componentToolTip>
+			</formComponent>
+			<formComponent componentType="JLabel" componentName="queryExplainLabel2"
+						   componentListeners="MouseListener" componentXPos="75" componentYPos="60" componentWidth="400" ComponentHeight="50">
+				<componentToolTip>2. Double click on PROFILEID data to retrieve Price Information
+				</componentToolTip>
+			</formComponent>
+			<formComponent componentType="JLabel" componentName="queryExplainLabel3"
+						   componentListeners="MouseListener" componentXPos="75" componentYPos="80" componentWidth="400" ComponentHeight="50">
+				<componentToolTip>3. Double click on TAX data to get Tax Information
+				</componentToolTip>
+			</formComponent>
+			<formComponent componentType="JLabel" componentName="queryExplainLabel4"
+						   componentListeners="MouseListener" componentXPos="75" componentYPos="100" componentWidth="400" ComponentHeight="50">
+				<componentToolTip>4. Double click on ORDER_ID data to get Order Information
+				</componentToolTip>
+			</formComponent>
+			<button buttonName="CUSTOMER" buttonAction="OK">
+				<buttonToolTip>Fetch Profile</buttonToolTip>
+			</button>
+			<button buttonName="ORDER" buttonAction="SUBMIT">
+				<buttonToolTip>Fetch Order Details</buttonToolTip>
+			</button>
+			<button buttonName="RESET" buttonAction="RESET">
+				<buttonToolTip>RESET</buttonToolTip>
+			</button>
+		</panel>
+
+		<panel panelName="Ui2Panel" subPanelName="FormPanel">
+			<formComponent componentType="JLabel" componentName="queryInputLabel"
+						   componentListeners="MouseListener" componentXPos="50" componentYPos="20">
+				<componentToolTip>OrderId/Email input:
+				</componentToolTip>
+			</formComponent>
+			<formComponent componentType="JTextField"
+						   componentName="queryInput" componentListeners="MouseListener|FocusListener"
+						   validationPattern="(\w+)" componentXPos="300" componentYPos="20"
+						   highLightColor="#FFCCEE">
+				<componentToolTip>OrderId/Email Input...
+				</componentToolTip>
+			</formComponent>
+			<button buttonName="CUSTOMER" buttonAction="OK">
+				<buttonToolTip>Fetch Profile</buttonToolTip>
+			</button>
+			<button buttonName="ORDER" buttonAction="SUBMIT">
+				<buttonToolTip>Fetch Order Details</buttonToolTip>
+			</button>
+			<button buttonName="RESET" buttonAction="RESET">
+				<buttonToolTip>RESET</buttonToolTip>
+			</button>
+		</panel>
+	</frame>
+</application>

@@ -13,6 +13,14 @@
 	<packaging>pom</packaging>
 	<name>Smart Swings</name>
 	<description>Smart Swings with Sample Project for AtgValidator</description>
+
+	<modules>
+		<module>x2jparser</module>
+		<module>basepanel</module>
+		<module>basemodel</module>
+		<module>swing-ui</module>
+	</modules>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -66,9 +74,4 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	<modules>
-		<module>x2jparser</module>
-		<module>basepanel</module>
-		<module>swing-ui</module>
-	</modules>
 </project>

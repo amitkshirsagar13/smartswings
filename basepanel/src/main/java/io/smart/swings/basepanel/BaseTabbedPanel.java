@@ -1,6 +1,7 @@
 package io.smart.swings.basepanel;
 
 import io.smart.swings.statuspanel.view.StatusPanel;
+import io.smart.swings.utils.ThreadUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,6 +32,8 @@ public class BaseTabbedPanel extends JTabbedPane {
             tab.setStatusPanel(statusPanel);
             basePanelMap.put(tab.getName(), tab);
             statusPanel.setStatusMessage(String.format("Added %s Panel to tab!!!", tab.getName()));
+            ThreadUtils.slowDown(1000);
         }
     }
+
 }

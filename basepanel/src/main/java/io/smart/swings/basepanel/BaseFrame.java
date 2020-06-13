@@ -1,8 +1,12 @@
 package io.smart.swings.basepanel;
 
+import io.smart.swings.ComponentConfiguration;
+import io.smart.swings.splash.BaseSplash;
+import io.smart.swings.utils.ThreadUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
+import java.net.URL;
 
 /**
  *
@@ -30,5 +34,32 @@ import javax.swing.*;
 
 @Slf4j
 public abstract class BaseFrame extends JFrame {
+
+    private BaseSplash baseSplash = null;
+
+    public BaseFrame(ComponentConfiguration componentConfiguration) {
+        super();
+        initSplash(componentConfiguration.getSplashScreen());
+
+    }
+    public void initSplash(String iImgName) {
+        if (iImgName == null || iImgName.equals("")) {
+            iImgName = System.getProperty("JSPLASH_SCREEN");
+        }
+        log.info("Pop SplashScreen (System Property: JSPLASH_SCREEN): " + iImgName);
+        URL splashImageResource = BaseFrame.class.getResource(String.format("/%s", iImgName));
+        baseSplash = new BaseSplash(this, new ImageIcon(splashImageResource));
+        baseSplash.setVisible(true);
+        baseSplash.setAlwaysOnTop(true);
+        ThreadUtils.slowDown.run();
+    }
+
+    public BaseSplash getBaseSplash() {
+        return baseSplash;
+    }
+
+    public void closeSplashScreen() {
+        baseSplash.closeIt();
+    }
 
 }

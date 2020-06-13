@@ -12,6 +12,7 @@ import io.smart.swings.ui.SwingUiMainFrame;
 import io.smart.swings.x2jparser.builder.ButtonBuilder;
 import io.smart.swings.x2jparser.builder.FormBuilder;
 import io.smart.swings.x2jparser.builder.JComponentBuilder;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -65,8 +66,8 @@ public class SwingUiStart {
     }
 
     @Bean
-    public SwingUiMainFrame swingUiMainFrame() {
-        return new SwingUiMainFrame();
+    public SwingUiMainFrame swingUiMainFrame(ComponentConfiguration componentConfiguration) {
+        return new SwingUiMainFrame(componentConfiguration);
     }
 
     @Bean
@@ -127,6 +128,7 @@ public class SwingUiStart {
 
     @EventListener(ApplicationReadyEvent.class)
     private void runApplicationReadyEvent(ApplicationReadyEvent event) {
+
         swingUiMainFrame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent windowEvent) {
@@ -135,6 +137,7 @@ public class SwingUiStart {
         });
         swingUiMainFrame.setVisible(true);
         swingUiMainFrame.setSize(new Dimension(1000, 750));
+        updateInitStatus(null, 25);
 
         JPanel contentPanel = (JPanel) swingUiMainFrame.getContentPane();
         contentPanel.setLayout(new BorderLayout());
@@ -152,10 +155,22 @@ public class SwingUiStart {
                 ).forEach(panel -> {
                     BasePanel tabPanel = new BasePanel(uiPanelListener, formBuilder, buttonBuilder);
                     tabPanel.buildPanel(panel.getPanelName());
+                    updateInitStatus(String.format("Added %s tab !!!",panel.getPanelName()), 25);
                     tabbedPanel.addTabbedPanel(tabPanel);
                 });
 
         toolbarPanel.loadPanelOnContentPanel(contentPanel, BorderLayout.NORTH);
         statusPanel.loadPanelOnContentPanel(contentPanel, BorderLayout.SOUTH);
+        swingUiMainFrame.closeSplashScreen();
+    }
+    int progress = 0;
+
+    private void updateInitStatus(String message, int progress) {
+        this.progress = this.progress + progress;
+        if (StringUtils.isNotEmpty(message)) {
+            swingUiMainFrame.getBaseSplash().setProgress(String.format(" %s", message), this.progress);
+        } else {
+            swingUiMainFrame.getBaseSplash().setProgress(this.progress);
+        }
     }
 }

@@ -1,6 +1,7 @@
 ui:
   component:
     componentConfigXml: UiComponents.xml
+    splashScreen: splashscreen.png
   toolbar:
     toolbarListMap:
       ENVBAR:

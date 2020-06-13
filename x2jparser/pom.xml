@@ -56,7 +56,7 @@
 								<source>src/main/resources/xsd/Components.xsd</source>
 							</sources>
 							<packageName>io.smart.swings.x2jparser.builder.components</packageName>
-							<outputDirectory>${basedir}/gen/src/main/java</outputDirectory>
+							<outputDirectory>${basedir}/src/main/java-gen</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>

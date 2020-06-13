@@ -142,7 +142,11 @@ public class SwingUiStart {
         JPanel contentPanel = (JPanel) swingUiMainFrame.getContentPane();
         contentPanel.setLayout(new BorderLayout());
 
+        toolbarPanel.loadPanelOnContentPanel(contentPanel, BorderLayout.NORTH);
+        statusPanel.loadPanelOnContentPanel(contentPanel, BorderLayout.SOUTH);
+        
         tabbedPanel.populateTabbedPanels(contentPanel);
+
 
         jComponentBuilder.getApplication()
                 .getFrame()
@@ -159,8 +163,6 @@ public class SwingUiStart {
                     tabbedPanel.addTabbedPanel(tabPanel);
                 });
 
-        toolbarPanel.loadPanelOnContentPanel(contentPanel, BorderLayout.NORTH);
-        statusPanel.loadPanelOnContentPanel(contentPanel, BorderLayout.SOUTH);
         swingUiMainFrame.closeSplashScreen();
     }
     int progress = 0;

@@ -34,11 +34,7 @@
     </dependencies>
 
 	<build>
-		<resources>
-			<resource>
-				<directory>gen/src/main/java</directory>
-			</resource>
-		</resources>
+		<sourceDirectory>src/main/java-gen</sourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>

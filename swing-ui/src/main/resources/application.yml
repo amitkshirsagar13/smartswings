@@ -2,7 +2,7 @@ ui:
   component:
     componentConfigXml: UiComponents.xml
     splashScreen: splashscreen.png
-    lookAndFeel: mac
+    lookAndFeel: Nimbus
   toolbar:
     toolbarListMap:
       ENVBAR:

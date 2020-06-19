@@ -9,6 +9,7 @@ import io.smart.swings.statuspanel.view.StatusPanel;
 import io.smart.swings.toolpanel.ToolbarConfiguration;
 import io.smart.swings.toolpanel.ToolbarPanel;
 import io.smart.swings.ui.SwingUiMainFrame;
+import io.smart.swings.utils.LookAndFeel;
 import io.smart.swings.x2jparser.builder.ButtonBuilder;
 import io.smart.swings.x2jparser.builder.FormBuilder;
 import io.smart.swings.x2jparser.builder.JComponentBuilder;
@@ -51,6 +52,11 @@ public class SwingUiStart {
     }
 
     @Bean
+    public LookAndFeel lookAndFeel(ComponentConfiguration componentConfiguration){
+        return new LookAndFeel(componentConfiguration);
+    }
+
+    @Bean
     public JComponentBuilder jComponentBuilder(ComponentConfiguration componentConfiguration) {
         return new JComponentBuilder(componentConfiguration.getComponentConfigXml());
     }
@@ -66,8 +72,8 @@ public class SwingUiStart {
     }
 
     @Bean
-    public SwingUiMainFrame swingUiMainFrame(ComponentConfiguration componentConfiguration) {
-        return new SwingUiMainFrame(componentConfiguration);
+    public SwingUiMainFrame swingUiMainFrame(ComponentConfiguration componentConfiguration, LookAndFeel lookAndFeel) {
+        return new SwingUiMainFrame(componentConfiguration, lookAndFeel);
     }
 
     @Bean

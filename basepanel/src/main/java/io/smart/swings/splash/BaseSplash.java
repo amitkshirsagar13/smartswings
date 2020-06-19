@@ -14,7 +14,6 @@ public class BaseSplash extends JWindow {
     private static JLabel progressBarMsg = new JLabel();
     ImageIcon imageIcon;
     private final Color iBorderColor = Color.BLACK;
-    private int iBorderSize;
     private int iImgWidth;
     private int iImgHeight;
 
@@ -29,8 +28,8 @@ public class BaseSplash extends JWindow {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         iImgWidth = imageIcon.getIconWidth();
         iImgHeight = imageIcon.getIconHeight();
-        int width = iImgWidth + (iBorderSize * 2);
-        int height = iImgHeight + (iBorderSize * 2);
+        int width = iImgWidth;
+        int height = iImgHeight;
 
         int x = (screenSize.width - width) / 2;
         int y = (screenSize.height - height) / 2;
@@ -87,6 +86,8 @@ public class BaseSplash extends JWindow {
         progressBarMsg.setFont(new Font("SansSerif", Font.PLAIN, 12));
         progressBarMsg.setOpaque(false);
 
+
+        progressBar.setPreferredSize(new Dimension(iImgWidth, 20));
         progressBar.add(progressBarMsg);
 
         imageLabel.setLayout(null);

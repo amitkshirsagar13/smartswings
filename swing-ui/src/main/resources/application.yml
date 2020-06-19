@@ -2,6 +2,7 @@ ui:
   component:
     componentConfigXml: UiComponents.xml
     splashScreen: splashscreen.png
+    lookAndFeel: mac
   toolbar:
     toolbarListMap:
       ENVBAR:

@@ -6,4 +6,5 @@ import lombok.Data;
 public class ComponentConfiguration {
     private String componentConfigXml;
     private String splashScreen;
+    private String lookAndFeel;
 }

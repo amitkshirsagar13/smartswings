@@ -1,5 +1,6 @@
 package io.smart.swings.basepanel;
 
+import io.smart.swings.utils.LookAndFeel;
 import io.smart.swings.ComponentConfiguration;
 import io.smart.swings.splash.BaseSplash;
 import io.smart.swings.utils.ThreadUtils;
@@ -35,12 +36,14 @@ import java.net.URL;
 @Slf4j
 public abstract class BaseFrame extends JFrame {
 
-    private BaseSplash baseSplash = null;
+    private LookAndFeel lookAndFeel;
+    private BaseSplash baseSplash;
 
-    public BaseFrame(ComponentConfiguration componentConfiguration) {
+    public BaseFrame(ComponentConfiguration componentConfiguration, LookAndFeel lookAndFeel) {
         super();
+        this.lookAndFeel = lookAndFeel;
+        this.lookAndFeel.lookAndFeel();
         initSplash(componentConfiguration.getSplashScreen());
-
     }
     public void initSplash(String iImgName) {
         if (iImgName == null || iImgName.equals("")) {

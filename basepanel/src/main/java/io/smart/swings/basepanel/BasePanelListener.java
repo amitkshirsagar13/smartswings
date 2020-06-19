@@ -37,22 +37,6 @@ import java.util.regex.Pattern;
 public abstract class BasePanelListener extends JPanel
 		implements ActionListener, FocusListener, MouseListener, BaseButtonCommands, ItemListener {
 
-	static {
-		try {
-			for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					UIManager.setLookAndFeel(info.getClassName());
-					UIManager.put("nimbusOrange", new Color(40, 225, 40));
-					UIManager.put("Table.background", Color.WHITE);
-					UIManager.put("Table.alternateRowColor", Color.BLUE);
-					UIManager.put("nimbusSelectionBackground", new Color(220, 220, 220));
-					UIManager.put("List[Selected].textBackground", new Color(220, 220, 220));
-					break;
-				}
-			}
-		} catch (Exception e) {
-		}
-	}
 
 	/*
 	 * (non-Javadoc)

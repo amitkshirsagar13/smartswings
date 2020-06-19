@@ -81,7 +81,7 @@ public class BaseSplash extends JWindow {
         progressBarMsg.setSize(iImgWidth, 15);
         progressBarMsg.setForeground(Color.BLACK);
 
-        progressBar.setBounds(0, iImgHeight - 45, iImgWidth, 20);
+        progressBar.setBounds(0, iImgHeight - 40, iImgWidth, 20);
 
         progressBarMsg.setFont(new Font("SansSerif", Font.PLAIN, 12));
         progressBarMsg.setOpaque(false);

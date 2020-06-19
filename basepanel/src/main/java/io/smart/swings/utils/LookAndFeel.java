@@ -14,7 +14,7 @@ public class LookAndFeel {
     private ComponentConfiguration componentConfiguration;
     public void lookAndFeel() {
         try {
-            if (StringUtils.isNotEmpty(componentConfiguration.getLookAndFeel()) && System.getProperty("os.name").contains("Mac OS")) {
+            if (StringUtils.isNotEmpty(componentConfiguration.getLookAndFeel()) && !System.getProperty("os.name").contains("Mac OS")) {
                 for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                     if (componentConfiguration.getLookAndFeel().equalsIgnoreCase(info.getName())) {
                         UIManager.setLookAndFeel(info.getClassName());

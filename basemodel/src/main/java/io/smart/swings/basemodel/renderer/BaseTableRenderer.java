@@ -6,6 +6,7 @@ import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,8 +34,8 @@ import org.slf4j.LoggerFactory;
  * </pre>
  */
 
+@Slf4j
 public class BaseTableRenderer extends DefaultTableCellRenderer {
-	private final static Logger slf4j = LoggerFactory.getLogger(BaseTableRenderer.class);
 
 	/*
 	 * (non-Javadoc)

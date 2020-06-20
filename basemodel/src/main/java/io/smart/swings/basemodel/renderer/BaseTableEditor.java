@@ -3,6 +3,7 @@ package io.smart.swings.basemodel.renderer;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,9 +31,8 @@ import org.slf4j.LoggerFactory;
  * </pre>
  */
 
+@Slf4j
 public class BaseTableEditor extends DefaultCellEditor {
-
-	private final static Logger slf4j = LoggerFactory.getLogger(BaseTableEditor.class);
 
 	/**
 	 * @param arg0

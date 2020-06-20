@@ -1,8 +1,8 @@
-package io.smart.swings.basepanel;
+package io.smart.swings.panel;
 
-import io.smart.swings.basepanel.contants.BaseButtonCommands;
-import io.smart.swings.basepanel.form.MyJTextArea;
-import io.smart.swings.basepanel.form.MyJTextField;
+import io.smart.swings.panel.contants.BaseButtonCommands;
+import io.smart.swings.panel.form.MyJTextArea;
+import io.smart.swings.panel.form.MyJTextField;
 import io.smart.swings.statuspanel.view.StatusPanel;
 import io.smart.swings.x2jparser.builder.ButtonBuilder;
 import io.smart.swings.x2jparser.builder.FormBuilder;

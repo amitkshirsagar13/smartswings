@@ -1,7 +1,7 @@
 package io.smart.swings.statuspanel.view;
 
-import io.smart.swings.basepanel.BasePanel;
-import io.smart.swings.basepanel.BasePanelListener;
+import io.smart.swings.panel.BasePanel;
+import io.smart.swings.panel.BasePanelListener;
 import io.smart.swings.statuspanel.data.InfoAccessModel;
 import lombok.extern.slf4j.Slf4j;
 

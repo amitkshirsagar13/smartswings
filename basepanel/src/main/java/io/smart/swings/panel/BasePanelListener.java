@@ -1,7 +1,7 @@
-package io.smart.swings.basepanel;
+package io.smart.swings.panel;
 
-import io.smart.swings.basepanel.contants.BaseButtonCommands;
-import io.smart.swings.basepanel.form.MyJTextField;
+import io.smart.swings.panel.contants.BaseButtonCommands;
+import io.smart.swings.panel.form.MyJTextField;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;

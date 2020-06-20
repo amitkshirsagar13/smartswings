@@ -1,6 +1,6 @@
 package io.smart.swings.utils;
 
-import io.smart.swings.basepanel.BaseFrame;
+import io.smart.swings.panel.BaseFrame;
 
 import javax.swing.*;
 import java.net.URL;

@@ -1,4 +1,4 @@
-package io.smart.swings.basepanel;
+package io.smart.swings.panel;
 
 import io.smart.swings.statuspanel.view.StatusPanel;
 import io.smart.swings.utils.ThreadUtils;

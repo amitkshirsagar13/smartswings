@@ -1,7 +1,6 @@
-package io.smart.swings.basepanel.form;
+package io.smart.swings.panel.form;
 
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

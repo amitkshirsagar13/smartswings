@@ -1,7 +1,7 @@
 package io.smart.swings.toolpanel;
 
-import io.smart.swings.basepanel.BasePanel;
-import io.smart.swings.basepanel.BasePanelListener;
+import io.smart.swings.panel.BasePanel;
+import io.smart.swings.panel.BasePanelListener;
 import io.smart.swings.x2jparser.builder.components.Button;
 import lombok.extern.slf4j.Slf4j;
 

@@ -1,6 +1,6 @@
 package io.smart.swings.actions;
 
-import io.smart.swings.basepanel.BasePanelListener;
+import io.smart.swings.panel.BasePanelListener;
 import io.smart.swings.toolpanel.ToolbarPanel;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

@@ -2,8 +2,8 @@ package io.smart.swings;
 
 import io.smart.swings.actions.ToolbarListener;
 import io.smart.swings.actions.UiPanelListener;
-import io.smart.swings.basepanel.BasePanel;
-import io.smart.swings.basepanel.BaseTabbedPanel;
+import io.smart.swings.panel.BasePanel;
+import io.smart.swings.panel.BaseTabbedPanel;
 import io.smart.swings.statuspanel.StatusPanelListener;
 import io.smart.swings.statuspanel.view.StatusPanel;
 import io.smart.swings.toolpanel.ToolbarConfiguration;

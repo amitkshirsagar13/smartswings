@@ -1,4 +1,4 @@
-package io.smart.swings.basepanel;
+package io.smart.swings.panel;
 
 import io.smart.swings.utils.LookAndFeel;
 import io.smart.swings.ComponentConfiguration;
@@ -8,7 +8,6 @@ import io.smart.swings.utils.ThreadUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
-import java.net.URL;
 
 /**
  *

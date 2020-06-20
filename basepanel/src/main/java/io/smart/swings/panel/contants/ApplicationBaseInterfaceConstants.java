@@ -1,4 +1,4 @@
-package io.smart.swings.basepanel.contants;
+package io.smart.swings.panel.contants;
 
 /**
  * 

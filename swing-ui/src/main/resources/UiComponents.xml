@@ -61,6 +61,7 @@
 			<button buttonName="RESET" buttonAction="RESET">
 				<buttonToolTip>RESET</buttonToolTip>
 			</button>
+			<table tableName="Ui-Table" componentHeight="600" componentWidth="500"></table>
 		</panel>
 
 		<panel panelName="Ui2Panel" subPanelName="FormPanel">

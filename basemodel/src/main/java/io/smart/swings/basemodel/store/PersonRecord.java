@@ -2,6 +2,7 @@ package io.smart.swings.basemodel.store;
 
 import java.util.Vector;
 
+import lombok.Builder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,18 +29,8 @@ import org.slf4j.LoggerFactory;
  * </pre>
  */
 
+@Builder
 public class PersonRecord extends RecordsBase {
-	private final static Logger slf4j = LoggerFactory.getLogger(PersonRecord.class);
-
-	/**
-	 * 
-	 */
-	public PersonRecord(String id, String name, String place, String role) {
-		this.id = id;
-		this.name = name;
-		this.place = place;
-		this.role = role;
-	}
 
 	private String id = null;
 	private String name = null;

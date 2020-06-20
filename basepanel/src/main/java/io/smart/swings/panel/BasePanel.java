@@ -1,11 +1,16 @@
 package io.smart.swings.panel;
 
+import io.smart.swings.basemodel.SwingsModel;
+import io.smart.swings.basemodel.store.PersonRecord;
+import io.smart.swings.basemodel.store.RecordsBase;
 import io.smart.swings.panel.contants.BaseButtonCommands;
 import io.smart.swings.panel.form.MyJTextArea;
 import io.smart.swings.panel.form.MyJTextField;
 import io.smart.swings.statuspanel.view.StatusPanel;
+import io.smart.swings.table.BaseTable;
 import io.smart.swings.x2jparser.builder.ButtonBuilder;
 import io.smart.swings.x2jparser.builder.FormBuilder;
+import io.smart.swings.x2jparser.builder.TableBuilder;
 import io.smart.swings.x2jparser.builder.components.Button;
 import io.smart.swings.x2jparser.builder.components.FormComponent;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +23,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Vector;
 
 /**
  * 
@@ -48,16 +54,18 @@ public class BasePanel extends JPanel implements BaseButtonCommands {
 	protected final BasePanelListener basePanelListener;
 	private final FormBuilder formBuilder;
 	private final ButtonBuilder buttonBuilder;
+	private final TableBuilder tableBuilder;
+	private final JPanel contentPanel;
 
 	private JPanel infoPanel = new JPanel();
 	private JPanel centerPanel = new JPanel();
-	private JPanel resultPanel = new JPanel();
+	private JPanel tablePanel = new JPanel();
 	private JPanel buttonPanel = new JPanel();
 	private JPanel treePanel = new JPanel();
 	private JPanel scaledPanel = new JPanel();
 	private StatusPanel statusPanel;
 
-	public void loadPanelOnContentPanel(JPanel contentPanel, String layOut) {
+	public void loadPanelOnContentPanel(String layOut) {
 		contentPanel.add(this, layOut);
 	}
 
@@ -67,6 +75,7 @@ public class BasePanel extends JPanel implements BaseButtonCommands {
 		log.debug("Building Panel: " + panelName);
 		populateInfoPanel();
 		populateCenterPanel();
+		populateTablePanel();
 		populateButtonPanel();
 		populateTreePanel();
 	}
@@ -173,11 +182,41 @@ public class BasePanel extends JPanel implements BaseButtonCommands {
 		this.add(buttonPanel, BorderLayout.SOUTH);
 	}
 
+	private void populateTablePanel() {buttonPanel.setToolTipText("ButtonPanel...");
+		setBorder(tablePanel, null);
+		if (tableBuilder.getTablesForPanel(getName()) != null
+				|| tableBuilder.getTablesForPanel(getName()).size() > 0) {
+			log.debug("Populating Table for Panel: " + getName());
+			tableBuilder
+			.getTablesForPanel(getName())
+			.stream()
+			.forEach(table -> {
+				Vector<PersonRecord> recordsList = new Vector<>();
+				Vector columns = new Vector();
+				PersonRecord personRecord = PersonRecord.builder().name("Name").place("Place").role("Role").id("ID").build();
+				recordsList.add(personRecord);
+				columns.add(personRecord.getRecordVector());
+				SwingsModel swingsModel = new SwingsModel(recordsList, personRecord.getRecordVector());
+				BaseTable baseTable = new BaseTable(swingsModel);
+				JScrollPane scrollPanel = baseTable.getScrollPanel();
+				scrollPanel
+						.setSize(Integer.parseInt(table.getComponentWidth()),
+								Integer.parseInt(table.getComponentHeight()));
+				baseTable.populateTable();
+
+				JPanel tablePanel = new JPanel();
+				tablePanel.setSize(Integer.parseInt(table.getComponentWidth()),
+						Integer.parseInt(table.getComponentHeight()));
+				tablePanel.add(scrollPanel);
+				this.add(tablePanel, BorderLayout.EAST);
+			});
+		}
+	}
+
 	public void populateTreePanel() {
 		treePanel.setToolTipText("TreePanel...");
 		setBorder(treePanel, null);
 		this.add(treePanel, BorderLayout.WEST);
-		this.add(resultPanel, BorderLayout.EAST);
 	}
 
 	private void setBorder(JPanel panel, Border borderType) {
@@ -204,8 +243,8 @@ public class BasePanel extends JPanel implements BaseButtonCommands {
 	/**
 	 * @return the resultPanel
 	 */
-	public JPanel getResultPanel() {
-		return resultPanel;
+	public JPanel getTablePanel() {
+		return tablePanel;
 	}
 
 	/**

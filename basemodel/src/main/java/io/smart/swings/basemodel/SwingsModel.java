@@ -37,14 +37,15 @@ import io.smart.swings.basemodel.store.RecordsBase;
 @Slf4j
 public class SwingsModel extends DefaultTableModel {
 
-	public SwingsModel(Vector<RecordsBase> recordsList, Vector columns) {
-
+	public SwingsModel(Vector recordsList, Vector columns) {
 		super();
 		Vector<Vector> filteredRecordsList = new Vector<Vector>();
-		for (Iterator<RecordsBase> iterator = recordsList.iterator(); iterator.hasNext();) {
-			RecordsBase recordBase = iterator.next();
-			Vector vector = recordBase.getRecordVector();
-			filteredRecordsList.add(vector);
+		if (recordsList!=null) {
+			for (Iterator<RecordsBase> iterator = recordsList.iterator(); iterator.hasNext();) {
+				RecordsBase recordBase = iterator.next();
+				Vector vector = recordBase.getRecordVector();
+				filteredRecordsList.add(vector);
+			}
 		}
 
 		this.setDataVector(filteredRecordsList, columns);

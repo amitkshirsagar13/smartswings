@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-			elementFormDefault="qualified">
-	<xsd:element name="application" type="Application">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="application">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="frame" type="Frame" />
+			</xsd:sequence>
+		</xsd:complexType>
 	</xsd:element>
-
-	<xsd:complexType name="Application">
-		<xsd:sequence>
-			<xsd:element name="frame" type="Frame" />
-		</xsd:sequence>
-	</xsd:complexType>
 
 	<xsd:complexType name="Frame">
 		<xsd:sequence>
 			<xsd:element name="panel" type="Panel" minOccurs="0"
-						 maxOccurs="unbounded" />
-			<xsd:element name="table" type="Table" minOccurs="0"
 						 maxOccurs="unbounded" />
 		</xsd:sequence>
 	</xsd:complexType>
@@ -25,6 +21,12 @@
 					   use="optional" />
 		<xsd:attribute name="componentRenderer" type="xsd:string"
 					   use="optional" />
+		<xsd:attribute name="componentXPos" type="xsd:string" use="optional" />
+		<xsd:attribute name="componentYPos" type="xsd:string" use="optional" />
+		<xsd:attribute name="componentHeight" type="xsd:string" use="optional" />
+		<xsd:attribute name="componentWidth" type="xsd:string" use="optional" />
+		<xsd:attribute name="vscroll" type="xsd:boolean" use="optional" />
+		<xsd:attribute name="hscroll" type="xsd:boolean" use="optional" />
 	</xsd:complexType>
 
 	<xsd:simpleType name="Listeners">
@@ -47,6 +49,8 @@
 				maxOccurs="unbounded" />
 			<xsd:element name="button" type="Button" minOccurs="0"
 				maxOccurs="unbounded" />
+			<xsd:element name="table" type="Table" minOccurs="0"
+						 maxOccurs="unbounded" />
 		</xsd:sequence>
 		<xsd:attribute name="panelName" type="xsd:string" use="required" />
 		<xsd:attribute name="subPanelName" type="xsd:string"
@@ -80,11 +84,11 @@
 			use="optional" />
 		<xsd:attribute name="componentImage" type="xsd:string"
 			use="optional" />
+		<xsd:attribute name="rows" type="xsd:integer" use="optional" />
 		<xsd:attribute name="componentXPos" type="xsd:string" use="optional" />
 		<xsd:attribute name="componentYPos" type="xsd:string" use="optional" />
 		<xsd:attribute name="componentHeight" type="xsd:string" use="optional" />
 		<xsd:attribute name="componentWidth" type="xsd:string" use="optional" />
-		<xsd:attribute name="rows" type="xsd:integer" use="optional" />
 		<xsd:attribute name="vscroll" type="xsd:boolean" use="optional" />
 		<xsd:attribute name="hscroll" type="xsd:boolean" use="optional" />
 		<xsd:attribute name="highLightColor" type="xsd:string" use="optional" />

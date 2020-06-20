@@ -29,7 +29,6 @@ import org.slf4j.LoggerFactory;
  */
 
 public class RecordsBase extends Vector<Object> {
-	private final static Logger slf4j = LoggerFactory.getLogger(RecordsBase.class);
 
 	public Vector getRecordVector() {
 		return this;

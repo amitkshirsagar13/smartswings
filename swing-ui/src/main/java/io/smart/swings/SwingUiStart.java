@@ -13,6 +13,7 @@ import io.smart.swings.utils.LookAndFeel;
 import io.smart.swings.x2jparser.builder.ButtonBuilder;
 import io.smart.swings.x2jparser.builder.FormBuilder;
 import io.smart.swings.x2jparser.builder.JComponentBuilder;
+import io.smart.swings.x2jparser.builder.TableBuilder;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -72,6 +73,11 @@ public class SwingUiStart {
     }
 
     @Bean
+    public TableBuilder tableBuilder(JComponentBuilder jComponentBuilder) {
+        return new TableBuilder(jComponentBuilder);
+    }
+
+    @Bean
     public SwingUiMainFrame swingUiMainFrame(ComponentConfiguration componentConfiguration, LookAndFeel lookAndFeel) {
         return new SwingUiMainFrame(componentConfiguration, lookAndFeel);
     }
@@ -82,8 +88,8 @@ public class SwingUiStart {
     }
 
     @Bean
-    public StatusPanel statusPanel() {
-        return new StatusPanel(statusPanelListener);
+    public StatusPanel statusPanel(SwingUiMainFrame swingUiMainFrame) {
+        return new StatusPanel(statusPanelListener, (JPanel) swingUiMainFrame.getContentPane());
     }
 
     @Bean
@@ -97,8 +103,8 @@ public class SwingUiStart {
     }
 
     @Bean
-    public ToolbarPanel toolbarPanel(ToolbarListener toolbarListener, ToolbarConfiguration toolbarConfiguration) {
-        ToolbarPanel toolbarPanel = new ToolbarPanel(toolbarListener, toolbarConfiguration);
+    public ToolbarPanel toolbarPanel(ToolbarListener toolbarListener, ToolbarConfiguration toolbarConfiguration, SwingUiMainFrame swingUiMainFrame) {
+        ToolbarPanel toolbarPanel = new ToolbarPanel(toolbarListener, toolbarConfiguration, (JPanel) swingUiMainFrame.getContentPane());
         toolbarListener.setToolbarPanel(toolbarPanel);
         return toolbarPanel;
     }
@@ -130,6 +136,9 @@ public class SwingUiStart {
     private ButtonBuilder buttonBuilder;
 
     @Autowired
+    private TableBuilder tableBuilder;
+
+    @Autowired
     private JComponentBuilder jComponentBuilder;
 
     @EventListener(ApplicationReadyEvent.class)
@@ -148,9 +157,9 @@ public class SwingUiStart {
         JPanel contentPanel = (JPanel) swingUiMainFrame.getContentPane();
         contentPanel.setLayout(new BorderLayout());
 
-        toolbarPanel.loadPanelOnContentPanel(contentPanel, BorderLayout.NORTH);
-        statusPanel.loadPanelOnContentPanel(contentPanel, BorderLayout.SOUTH);
-        
+        toolbarPanel.loadPanelOnContentPanel(BorderLayout.NORTH);
+        statusPanel.loadPanelOnContentPanel(BorderLayout.SOUTH);
+
         tabbedPanel.populateTabbedPanels(contentPanel);
 
 
@@ -163,7 +172,7 @@ public class SwingUiStart {
                                 .getSubPanelName()
                                 .equalsIgnoreCase("FormPanel")
                 ).forEach(panel -> {
-                    BasePanel tabPanel = new BasePanel(uiPanelListener, formBuilder, buttonBuilder);
+                    BasePanel tabPanel = new BasePanel(uiPanelListener, formBuilder, buttonBuilder, tableBuilder, contentPanel);
                     tabPanel.buildPanel(panel.getPanelName());
                     updateInitStatus(String.format("Added %s tab !!!",panel.getPanelName()), 25);
                     tabbedPanel.addTabbedPanel(tabPanel);

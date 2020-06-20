@@ -34,8 +34,8 @@ import java.awt.*;
 public class StatusPanel extends BasePanel implements Runnable {
 	private static final long serialVersionUID = 1L;
 
-	public StatusPanel(BasePanelListener basePanelListener) {
-		super(basePanelListener, null, null);
+	public StatusPanel(BasePanelListener basePanelListener, JPanel contentPanel) {
+		super(basePanelListener, null, null, null, contentPanel);
 		log.debug("Loaded statusPanel to mainFrame...");
 		loadViewComponants();
 	}

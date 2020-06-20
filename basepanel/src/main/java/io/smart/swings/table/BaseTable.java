@@ -5,17 +5,19 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import javax.swing.*;
+import java.awt.*;
 
 @Data
 @RequiredArgsConstructor
 public class BaseTable extends JTable {
-    private final SwingsModel tableModel;
+    private final SwingsModel swingsModel;
     private ListSelectionModel select;
+    JScrollPane scrollPanel = new JScrollPane();
 
 
-    public void populateTable(JPanel contentPanel) {
+    public void populateTable() {
         setSelect(select);
-        JScrollPane sp=new JScrollPane(this);
-        contentPanel.add(sp);
+        scrollPanel.add(this);
+        setModel(swingsModel);
     }
 }

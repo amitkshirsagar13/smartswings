@@ -36,8 +36,8 @@ import java.util.List;
 @Slf4j
 public class ToolbarPanel extends BasePanel {
 
-	public ToolbarPanel(BasePanelListener basePanelListener, ToolbarConfiguration toolbarConfiguration) {
-		super(basePanelListener, null, null);
+	public ToolbarPanel(BasePanelListener basePanelListener, ToolbarConfiguration toolbarConfiguration, JPanel contentPanel) {
+		super(basePanelListener, null, null, null, contentPanel);
 		this.setName("TOOLBARPANEL");
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.setBorder(BorderFactory.createRaisedBevelBorder());

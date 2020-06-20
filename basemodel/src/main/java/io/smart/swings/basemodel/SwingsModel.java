@@ -5,6 +5,7 @@ import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,8 +34,8 @@ import io.smart.swings.basemodel.store.RecordsBase;
  * </pre>
  */
 
+@Slf4j
 public class SwingsModel extends DefaultTableModel {
-	private final static Logger slf4j = LoggerFactory.getLogger(SwingsModel.class);
 
 	public SwingsModel(Vector<RecordsBase> recordsList, Vector columns) {
 

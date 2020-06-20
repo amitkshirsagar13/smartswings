@@ -1,18 +1,43 @@
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-	<xsd:element name="application">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element name="frame" type="Frame" />
-			</xsd:sequence>
-		</xsd:complexType>
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			elementFormDefault="qualified">
+	<xsd:element name="application" type="Application">
 	</xsd:element>
+
+	<xsd:complexType name="Application">
+		<xsd:sequence>
+			<xsd:element name="frame" type="Frame" />
+		</xsd:sequence>
+	</xsd:complexType>
 
 	<xsd:complexType name="Frame">
 		<xsd:sequence>
 			<xsd:element name="panel" type="Panel" minOccurs="0"
-				maxOccurs="unbounded" />
+						 maxOccurs="unbounded" />
+			<xsd:element name="table" type="Table" minOccurs="0"
+						 maxOccurs="unbounded" />
 		</xsd:sequence>
 	</xsd:complexType>
+
+	<xsd:complexType name="Table">
+		<xsd:attribute name="tableName" type="xsd:string" use="required" />
+		<xsd:attribute name="componentListeners" type="xsd:string"
+					   use="optional" />
+		<xsd:attribute name="componentRenderer" type="xsd:string"
+					   use="optional" />
+	</xsd:complexType>
+
+	<xsd:simpleType name="Listeners">
+		<xsd:list>
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="MouseListener" />
+					<xsd:enumeration value="FocusListener" />
+					<xsd:enumeration value="ListSelectionListener" />
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:list>
+	</xsd:simpleType>
 
 	<xsd:complexType name="Panel">
 		<xsd:sequence>
@@ -66,7 +91,7 @@
 		<xsd:attribute name="validationPattern" type="xsd:string" use="optional" />
 		<xsd:attribute name="componentDisabled" type="xsd:string"
 			use="optional" />
-		<xsd:attribute name="componentListeners" type="xsd:string"
+		<xsd:attribute name="componentListeners" type="Listeners"
 			use="optional" />
 	</xsd:complexType>
 

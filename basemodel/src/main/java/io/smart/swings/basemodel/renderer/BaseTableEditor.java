@@ -34,9 +34,6 @@ import org.slf4j.LoggerFactory;
 @Slf4j
 public class BaseTableEditor extends DefaultCellEditor {
 
-	/**
-	 * @param arg0
-	 */
 	public BaseTableEditor(String[] items) {
 		super(new JComboBox(items));
 	}

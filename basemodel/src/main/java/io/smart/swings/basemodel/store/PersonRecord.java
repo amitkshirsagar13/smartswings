@@ -106,8 +106,8 @@ public class PersonRecord extends RecordsBase {
 	public Vector getRecordVector() {
 		this.add(id);
 		this.add(name);
-		this.add(place);
 		this.add(role);
+		this.add(place);
 		return this;
 	}
 

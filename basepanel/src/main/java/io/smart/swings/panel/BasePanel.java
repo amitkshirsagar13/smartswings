@@ -1,6 +1,8 @@
 package io.smart.swings.panel;
 
 import io.smart.swings.basemodel.SwingsModel;
+import io.smart.swings.basemodel.renderer.BaseTableEditor;
+import io.smart.swings.basemodel.renderer.BaseTableRenderer;
 import io.smart.swings.basemodel.store.PersonRecord;
 import io.smart.swings.basemodel.store.RecordsBase;
 import io.smart.swings.panel.contants.BaseButtonCommands;
@@ -17,7 +19,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
@@ -102,11 +106,11 @@ public class BasePanel extends JPanel implements BaseButtonCommands {
 		if (formBuilder.getFormComponentsForPanel(getName(), null) == null
 				|| formBuilder.getFormComponentsForPanel(getName(), null).size() == 0) {
 			log.debug("Populating Default FormComponants for Panel: " + getName());
-			JTextField sampleTextField = new JTextField();
-			sampleTextField.setText("Sample TextField");
-			sampleTextField.addMouseListener(basePanelListener);
-			centerPanel.add(sampleTextField);
-			formComponents.put(sampleTextField.getName(), sampleTextField);
+//			JTextField sampleTextField = new JTextField();
+//			sampleTextField.setText("Sample TextField");
+//			sampleTextField.addMouseListener(basePanelListener);
+//			centerPanel.add(sampleTextField);
+//			formComponents.put(sampleTextField.getName(), sampleTextField);
 		} else {
 			log.debug("Populating FormComponents for Panel: " + getName());
 			addFormComponentsToPanel(centerPanel, formBuilder.getFormComponentsForPanel(getName(), null));
@@ -183,7 +187,13 @@ public class BasePanel extends JPanel implements BaseButtonCommands {
 	}
 
 	private void populateTablePanel() {buttonPanel.setToolTipText("ButtonPanel...");
-		setBorder(tablePanel, null);
+		log.debug("Populating CenterPanel: " + getName());
+		JPanel centerPanel = this.centerPanel;
+
+		centerPanel.setToolTipText("CenterPanel...");
+		this.add(this.centerPanel, BorderLayout.CENTER);
+
+		setBorder(centerPanel, null);
 		if (tableBuilder.getTablesForPanel(getName()) != null
 				|| tableBuilder.getTablesForPanel(getName()).size() > 0) {
 			log.debug("Populating Table for Panel: " + getName());
@@ -193,22 +203,59 @@ public class BasePanel extends JPanel implements BaseButtonCommands {
 			.forEach(table -> {
 				Vector<PersonRecord> recordsList = new Vector<>();
 				Vector columns = new Vector();
-				PersonRecord personRecord = PersonRecord.builder().name("Name").place("Place").role("Role").id("ID").build();
-				recordsList.add(personRecord);
-				columns.add(personRecord.getRecordVector());
-				SwingsModel swingsModel = new SwingsModel(recordsList, personRecord.getRecordVector());
-				BaseTable baseTable = new BaseTable(swingsModel);
-				JScrollPane scrollPanel = baseTable.getScrollPanel();
-				scrollPanel
-						.setSize(Integer.parseInt(table.getComponentWidth()),
-								Integer.parseInt(table.getComponentHeight()));
-				baseTable.populateTable();
-
-				JPanel tablePanel = new JPanel();
-				tablePanel.setSize(Integer.parseInt(table.getComponentWidth()),
-						Integer.parseInt(table.getComponentHeight()));
-				tablePanel.add(scrollPanel);
-				this.add(tablePanel, BorderLayout.EAST);
+				PersonRecord personRecord1 = PersonRecord.builder().name("Name1").place("Place1").role("Role1").id("ID1").build();
+				PersonRecord personRecord2 = PersonRecord.builder().name("Name2").place("Place2").role("Role2").id("ID2").build();
+				PersonRecord personRecord3 = PersonRecord.builder().name("Name1").place("Place1").role("Role1").id("ID1").build();
+				PersonRecord personRecord4 = PersonRecord.builder().name("Name2").place("Place2").role("Role2").id("ID2").build();
+				recordsList.add(personRecord1);
+				recordsList.add(personRecord2);
+				recordsList.add(personRecord3);
+				recordsList.add(personRecord4);
+				recordsList.add(personRecord1);
+				recordsList.add(personRecord2);
+				recordsList.add(personRecord3);
+				recordsList.add(personRecord4);
+				recordsList.add(personRecord1);
+				recordsList.add(personRecord2);
+				recordsList.add(personRecord3);
+				recordsList.add(personRecord4);
+				recordsList.add(personRecord1);
+				recordsList.add(personRecord2);
+				recordsList.add(personRecord3);
+				recordsList.add(personRecord4);
+				recordsList.add(personRecord1);
+				recordsList.add(personRecord2);
+				recordsList.add(personRecord3);
+				recordsList.add(personRecord1);
+				recordsList.add(personRecord2);
+				recordsList.add(personRecord3);
+				recordsList.add(personRecord4);
+				recordsList.add(personRecord1);
+				recordsList.add(personRecord2);
+				recordsList.add(personRecord3);
+				recordsList.add(personRecord4);
+				recordsList.add(personRecord1);
+				recordsList.add(personRecord2);
+				recordsList.add(personRecord3);
+				recordsList.add(personRecord4);
+				recordsList.add(personRecord4);
+				recordsList.add(personRecord1);
+				recordsList.add(personRecord2);
+				recordsList.add(personRecord3);
+				recordsList.add(personRecord4);
+				columns.add("id");
+				columns.add("name");
+				columns.add("role");
+				columns.add("place");
+				SwingsModel swingsModel = new SwingsModel(recordsList, columns);
+				BaseTable baseTable = new BaseTable();
+				baseTable.setModel(swingsModel);
+				BaseTableRenderer baseTableRenderer = new BaseTableRenderer();
+				baseTable.populateTable(baseTableRenderer, new Dimension(this.getWidth(), this.getHeight()));
+				JScrollPane scrollPane = new JScrollPane(baseTable, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+						JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+				centerPanel.setBackground(Color.BLACK);
+				centerPanel.add(scrollPane);
 			});
 		}
 	}

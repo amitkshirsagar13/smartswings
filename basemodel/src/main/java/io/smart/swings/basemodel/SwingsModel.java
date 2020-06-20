@@ -47,7 +47,6 @@ public class SwingsModel extends DefaultTableModel {
 				filteredRecordsList.add(vector);
 			}
 		}
-
 		this.setDataVector(filteredRecordsList, columns);
 	}
 

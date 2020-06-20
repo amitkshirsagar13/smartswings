@@ -3,6 +3,7 @@ package io.smart.swings.basepanel;
 import io.smart.swings.utils.LookAndFeel;
 import io.smart.swings.ComponentConfiguration;
 import io.smart.swings.splash.BaseSplash;
+import io.smart.swings.utils.ResourceProvider;
 import io.smart.swings.utils.ThreadUtils;
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,6 +44,8 @@ public abstract class BaseFrame extends JFrame {
         super();
         this.lookAndFeel = lookAndFeel;
         this.lookAndFeel.lookAndFeel();
+        setTitle(componentConfiguration.getApplicationName());
+        setIconImage(ResourceProvider.getImageIcon(componentConfiguration.getIcon()).getImage());
         initSplash(componentConfiguration.getSplashScreen());
     }
     public void initSplash(String iImgName) {
@@ -50,8 +53,8 @@ public abstract class BaseFrame extends JFrame {
             iImgName = System.getProperty("JSPLASH_SCREEN");
         }
         log.info("Pop SplashScreen (System Property: JSPLASH_SCREEN): " + iImgName);
-        URL splashImageResource = BaseFrame.class.getResource(String.format("/%s", iImgName));
-        baseSplash = new BaseSplash(this, new ImageIcon(splashImageResource));
+
+        baseSplash = new BaseSplash(this, ResourceProvider.getImageIcon(iImgName));
         baseSplash.setVisible(true);
         baseSplash.setAlwaysOnTop(true);
         ThreadUtils.slowDown.run();

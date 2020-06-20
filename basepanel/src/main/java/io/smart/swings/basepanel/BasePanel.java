@@ -104,10 +104,6 @@ public class BasePanel extends JPanel implements BaseButtonCommands {
 		}
 	}
 	
-	private ImageIcon getImageIcon(String imagePath) {
-		return new ImageIcon(imagePath);
-	}
-	
 	private JPanel buildScaledPanel() {
 		scaledPanel.setName("scaledPanel");
 		scaledPanel.setLayout(new BorderLayout());

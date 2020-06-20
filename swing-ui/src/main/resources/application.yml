@@ -1,5 +1,7 @@
 ui:
   component:
+    applicationName: Swing-Ui
+    icon: icon.png
     componentConfigXml: UiComponents.xml
     splashScreen: splashscreen.png
     lookAndFeel: Nimbus

@@ -5,7 +5,7 @@ import io.smart.swings.utils.ThreadUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
